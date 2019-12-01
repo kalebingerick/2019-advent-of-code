@@ -1,5 +1,5 @@
 var assert = require('assert');
-var calculateFuelForCraft = require('../day1-puzzle1');
+var calculateFuelForCraft = require('../src/day1-puzzle1');
 var fs = require('fs');
 var path = require('path');
 
