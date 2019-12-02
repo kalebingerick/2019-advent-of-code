@@ -3,7 +3,7 @@ var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
 
-describe.only('day2-puzzle1', () => {
+describe('day2-puzzle1', () => {
 
   it('should evaluate opcode1', () => {
     assert.equal(evaluateOpcode([1,0,0,0,99]), [2,0,0,0,99]);
@@ -25,7 +25,7 @@ describe.only('day2-puzzle1', () => {
     assert.deepEqual(evaluateOpcode([1,9,10,3,2,3,11,0,99,30,40,50]), [3500,9,10,70, 2,3,11,0, 99, 30,40,50]);
   })
 
-  it.only('should calculate from sample file', () => {
+  it('should calculate from sample file', () => {
     const data = fs.readFileSync(
       path.join(__dirname, '..', 'input-files', 'day2-puzzle1.txt'),
       'utf-8'
