@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "array-permutation": "^0.2.0"
   }
 }
