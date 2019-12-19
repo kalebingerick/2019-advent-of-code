@@ -1,26 +1,20 @@
-function calculateFuelForGivenMass(mass) {
-  return Math.floor(mass / 3) - 2;
-}
 
-function calculateFuel(mass) {
-  let sum = 0;
-  let currentFuel = calculateFuelForGivenMass(mass);
-  sum += currentFuel;
-  while (currentFuel > 0) {
-    currentFuel = calculateFuelForGivenMass(currentFuel);
-    if (currentFuel > 0) {
-      sum += currentFuel;
-    }
+const fuelForGivenMass = {};
+const calculateFuelForGivenMass = (mass) => {
+  if(!fuelForGivenMass[mass]) {
+     fuelForGivenMass[mass] = Math.floor(mass / 3) - 2;
   }
-  return sum;
+  return fuelForGivenMass[mass];
 }
 
-function calculateFuelForCraft(masses) {
-  let sum = 0;
-  masses.forEach(mass => {
-    sum += calculateFuel(mass);
-  });
-  return sum;
+const fuelForMass = {}
+const calculateFuel = (mass) => {
+  if(!fuelForMass[mass]) {
+    const fuelRequired = calculateFuelForGivenMass(mass);
+    if(fuelRequired > 0) return 0;
+    fuelForMass[mass] = fuelRequired + calculateFuel(fuelRequired)
+  }
+  return fuelForMass[mass]
 }
 
-module.exports = calculateFuelForCraft;
+module.exports = (masses) => masses.reduce((sum, mass) => sum + calculateFuel(mass), 0)
